@@ -13,15 +13,11 @@ class ContractQuerySet(models.QuerySet):
 
     def overlapping(self, unit_id, start_date, end_date):
         """Two closed date ranges overlap when each starts before the other ends."""
-        return self.filter(
-            unit_id=unit_id, start_date__lte=end_date, end_date__gte=start_date
-        )
+        return self.filter(unit_id=unit_id, start_date__lte=end_date, end_date__gte=start_date)
 
 
 class Contract(TimeStampedModel):
-    member = models.ForeignKey(
-        "members.Member", on_delete=models.PROTECT, related_name="contracts"
-    )
+    member = models.ForeignKey("members.Member", on_delete=models.PROTECT, related_name="contracts")
     unit = models.ForeignKey("units.Unit", on_delete=models.PROTECT, related_name="contracts")
     start_date = models.DateField()
     end_date = models.DateField()
@@ -60,7 +56,8 @@ class Contract(TimeStampedModel):
         ]
 
     def __str__(self):
-        return f"{self.member.full_name} @ {self.unit.unit_number} ({self.start_date} -> {self.end_date})"
+        period = f"{self.start_date} to {self.end_date}"
+        return f"{self.member.full_name} @ {self.unit.unit_number} ({period})"
 
     @property
     def is_active(self):

@@ -6,3 +6,6 @@ python-dateutil==2.9.0.post0
 python-dotenv==1.2.3
 pytest==9.1.1
 pytest-django==4.14.0
+
+# dev
+ruff==0.16.3

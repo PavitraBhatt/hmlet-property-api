@@ -10,9 +10,7 @@ import os
 from .settings import *  # noqa: F401,F403
 
 if os.getenv("DB_ENGINE") != "postgres":
-    DATABASES = {
-        "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}
-    }
+    DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}}
 
 # Tests do not need a slow KDF.
 PASSWORD_HASHERS = ["django.contrib.auth.hashers.MD5PasswordHasher"]

@@ -60,7 +60,9 @@ def find_conflicting_contract(unit_id: int, start_date: date, end_date: date, ex
 
 
 @transaction.atomic
-def create_contract(*, member, unit_id: int, start_date, end_date, monthly_rent=None, created_by=None):
+def create_contract(
+    *, member, unit_id: int, start_date, end_date, monthly_rent=None, created_by=None
+):
     """Create a contract, refusing to double-book the unit.
 
     The unit row is locked for the duration of the transaction so two requests

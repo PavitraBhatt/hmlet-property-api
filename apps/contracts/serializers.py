@@ -43,9 +43,7 @@ class ContractSerializer(serializers.ModelSerializer):
 
 
 class ContractCreateSerializer(serializers.Serializer):
-    member_id = serializers.PrimaryKeyRelatedField(
-        queryset=Member.objects.all(), source="member"
-    )
+    member_id = serializers.PrimaryKeyRelatedField(queryset=Member.objects.all(), source="member")
     unit_id = serializers.PrimaryKeyRelatedField(queryset=Unit.objects.all(), source="unit")
     start_date = serializers.DateField()
     end_date = serializers.DateField()

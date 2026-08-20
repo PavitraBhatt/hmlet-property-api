@@ -57,10 +57,14 @@ class Command(BaseCommand):
             members[email] = member
 
         today = date.today()
+        day = timedelta(days=1)
         bookings = [
-            ("aditi.rao@example.com", "04-12", today - timedelta(days=30), today + timedelta(days=335), None),
-            ("marcus.tan@example.com", "02-05", today - timedelta(days=200), today - timedelta(days=20), None),
-            ("lena.fischer@example.com", "10-01", today + timedelta(days=15), today + timedelta(days=380), "3600.00"),
+            # running right now
+            ("aditi.rao@example.com", "04-12", today - 30 * day, today + 335 * day, None),
+            # already finished
+            ("marcus.tan@example.com", "02-05", today - 200 * day, today - 20 * day, None),
+            # starts in a fortnight, at a negotiated rent
+            ("lena.fischer@example.com", "10-01", today + 15 * day, today + 380 * day, "3600.00"),
         ]
         for email, unit_number, start, end, rent in bookings:
             unit = units[unit_number]

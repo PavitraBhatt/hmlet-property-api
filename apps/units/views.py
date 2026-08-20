@@ -39,9 +39,7 @@ class PropertyUnitListCreateView(generics.ListCreateAPIView):
         return get_object_or_404(Property, pk=self.kwargs["property_id"])
 
     def get_queryset(self):
-        return Unit.objects.select_related("property").filter(
-            property_id=self.get_property().pk
-        )
+        return Unit.objects.select_related("property").filter(property_id=self.get_property().pk)
 
     def perform_create(self, serializer):
         prop = self.get_property()

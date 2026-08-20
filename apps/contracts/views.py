@@ -50,9 +50,7 @@ class ContractListCreateView(generics.ListCreateAPIView):
         except ContractError as exc:
             raise ValidationError({"detail": str(exc)})
 
-        return Response(
-            ContractSerializer(contract).data, status=status.HTTP_201_CREATED
-        )
+        return Response(ContractSerializer(contract).data, status=status.HTTP_201_CREATED)
 
 
 class ContractDetailView(generics.RetrieveAPIView):

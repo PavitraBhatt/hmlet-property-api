@@ -21,7 +21,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         User = get_user_model()
         staff, created = User.objects.get_or_create(
-            email="ops@hmlet.com", defaults={"full_name": "Ops Staff"}
+            email="ops@example.com", defaults={"full_name": "Ops Staff"}
         )
         if created:
             staff.set_password(DEMO_PASSWORD)
@@ -80,5 +80,5 @@ class Command(BaseCommand):
             )
 
         self.stdout.write(
-            self.style.SUCCESS(f"Seeded demo data. Login with ops@hmlet.com / {DEMO_PASSWORD}")
+            self.style.SUCCESS(f"Seeded demo data. Login with ops@example.com / {DEMO_PASSWORD}")
         )

@@ -9,7 +9,7 @@ Grab a token first:
 ```bash
 export TOKEN=$(curl -s -X POST http://localhost:8000/api/auth/login \
   -H "Content-Type: application/json" \
-  -d '{"email":"ops@hmlet.com","password":"Sup3rSecret!"}' \
+  -d '{"email":"ops@example.com","password":"Sup3rSecret!"}' \
   | python -c "import sys,json;print(json.load(sys.stdin)['tokens']['access'])")
 ```
 
@@ -24,7 +24,7 @@ Returns an access/refresh pair. Send the access token as `Authorization: Bearer 
 ```bash
 curl -X POST http://localhost:8000/api/auth/login \
   -H "Content-Type: application/json" \
-  -d '{"email": "ops@hmlet.com", "password": "Sup3rSecret!"}'
+  -d '{"email": "ops@example.com", "password": "Sup3rSecret!"}'
 ```
 
 `200`
@@ -33,10 +33,10 @@ curl -X POST http://localhost:8000/api/auth/login \
 {
   "user": {
     "id": 1,
-    "email": "ops@hmlet.com",
+    "email": "ops@example.com",
     "full_name": "Ops Staff",
     "is_staff": true,
-    "created_at": "2026-08-20T16:10:58.605239+08:00"
+    "created_at": "2026-08-20T18:39:08.361756+08:00"
   },
   "tokens": {
     "access": "eyJhbGciOiJI...<truncated>",
@@ -54,7 +54,7 @@ Tokens come back with the created user, so a freshly registered user is already 
 ```bash
 curl -X POST http://localhost:8000/api/auth/register \
   -H "Content-Type: application/json" \
-  -d '{"email": "jamie.ong@hmlet.com", "full_name": "Jamie Ong", "password": "Sup3rSecret!"}'
+  -d '{"email": "jamie.ong@example.com", "full_name": "Jamie Ong", "password": "Sup3rSecret!"}'
 ```
 
 `201`
@@ -63,10 +63,10 @@ curl -X POST http://localhost:8000/api/auth/register \
 {
   "user": {
     "id": 2,
-    "email": "jamie.ong@hmlet.com",
+    "email": "jamie.ong@example.com",
     "full_name": "Jamie Ong",
     "is_staff": true,
-    "created_at": "2026-08-20T16:11:22.815973+08:00"
+    "created_at": "2026-08-20T18:39:23.002119+08:00"
   },
   "tokens": {
     "access": "eyJhbGciOiJI...<truncated>",
@@ -93,8 +93,8 @@ curl -X POST http://localhost:8000/api/properties \
   "id": 3,
   "name": "Hmlet Cantonment",
   "address": "80 Cantonment Road, Singapore 089908",
-  "created_at": "2026-08-20T16:11:22.855197+08:00",
-  "updated_at": "2026-08-20T16:11:22.855268+08:00"
+  "created_at": "2026-08-20T18:39:23.015976+08:00",
+  "updated_at": "2026-08-20T18:39:23.015992+08:00"
 }
 ```
 
@@ -122,24 +122,24 @@ curl -X GET http://localhost:8000/api/properties \
       "name": "Cove Somerset",
       "address": "12 Somerset Road, Singapore 238164",
       "units_count": 3,
-      "created_at": "2026-08-20T16:11:02.384378+08:00",
-      "updated_at": "2026-08-20T16:11:02.384452+08:00"
+      "created_at": "2026-08-20T18:39:09.189945+08:00",
+      "updated_at": "2026-08-20T18:39:09.189962+08:00"
     },
     {
       "id": 2,
       "name": "Hmlet Tiong Bahru",
       "address": "5 Kim Pong Road, Singapore 169178",
       "units_count": 2,
-      "created_at": "2026-08-20T16:11:02.387959+08:00",
-      "updated_at": "2026-08-20T16:11:02.388019+08:00"
+      "created_at": "2026-08-20T18:39:09.190761+08:00",
+      "updated_at": "2026-08-20T18:39:09.190775+08:00"
     },
     {
       "id": 3,
       "name": "Hmlet Cantonment",
       "address": "80 Cantonment Road, Singapore 089908",
       "units_count": 0,
-      "created_at": "2026-08-20T16:11:22.855197+08:00",
-      "updated_at": "2026-08-20T16:11:22.855268+08:00"
+      "created_at": "2026-08-20T18:39:23.015976+08:00",
+      "updated_at": "2026-08-20T18:39:23.015992+08:00"
     }
   ]
 }
@@ -168,8 +168,8 @@ curl -X POST http://localhost:8000/api/properties/3/units \
   "unit_number": "07-04",
   "monthly_rent": "2900.00",
   "status": "available",
-  "created_at": "2026-08-20T16:11:22.916016+08:00",
-  "updated_at": "2026-08-20T16:11:22.916097+08:00"
+  "created_at": "2026-08-20T18:39:23.032608+08:00",
+  "updated_at": "2026-08-20T18:39:23.032625+08:00"
 }
 ```
 
@@ -190,8 +190,8 @@ curl -X GET http://localhost:8000/api/properties/3 \
   "name": "Hmlet Cantonment",
   "address": "80 Cantonment Road, Singapore 089908",
   "units_count": 1,
-  "created_at": "2026-08-20T16:11:22.855197+08:00",
-  "updated_at": "2026-08-20T16:11:22.855268+08:00",
+  "created_at": "2026-08-20T18:39:23.015976+08:00",
+  "updated_at": "2026-08-20T18:39:23.015992+08:00",
   "units": [
     {
       "id": 6,
@@ -200,8 +200,8 @@ curl -X GET http://localhost:8000/api/properties/3 \
       "unit_number": "07-04",
       "monthly_rent": "2900.00",
       "status": "available",
-      "created_at": "2026-08-20T16:11:22.916016+08:00",
-      "updated_at": "2026-08-20T16:11:22.916097+08:00"
+      "created_at": "2026-08-20T18:39:23.032608+08:00",
+      "updated_at": "2026-08-20T18:39:23.032625+08:00"
     }
   ]
 }
@@ -231,8 +231,8 @@ curl -X GET http://localhost:8000/api/units?status=available \
       "unit_number": "04-13",
       "monthly_rent": "2650.00",
       "status": "available",
-      "created_at": "2026-08-20T16:11:02.399006+08:00",
-      "updated_at": "2026-08-20T16:11:02.399033+08:00"
+      "created_at": "2026-08-20T18:39:09.192768+08:00",
+      "updated_at": "2026-08-20T18:39:09.192778+08:00"
     },
     {
       "id": 3,
@@ -241,8 +241,8 @@ curl -X GET http://localhost:8000/api/units?status=available \
       "unit_number": "10-01",
       "monthly_rent": "3800.00",
       "status": "available",
-      "created_at": "2026-08-20T16:11:02.401143+08:00",
-      "updated_at": "2026-08-20T16:11:02.401206+08:00"
+      "created_at": "2026-08-20T18:39:09.193298+08:00",
+      "updated_at": "2026-08-20T18:39:09.193307+08:00"
     },
     {
       "id": 4,
@@ -251,8 +251,8 @@ curl -X GET http://localhost:8000/api/units?status=available \
       "unit_number": "02-05",
       "monthly_rent": "2100.00",
       "status": "available",
-      "created_at": "2026-08-20T16:11:02.403113+08:00",
-      "updated_at": "2026-08-20T16:11:02.403138+08:00"
+      "created_at": "2026-08-20T18:39:09.193816+08:00",
+      "updated_at": "2026-08-20T18:39:09.193825+08:00"
     },
     {
       "id": 5,
@@ -261,8 +261,8 @@ curl -X GET http://localhost:8000/api/units?status=available \
       "unit_number": "02-06",
       "monthly_rent": "2100.00",
       "status": "available",
-      "created_at": "2026-08-20T16:11:02.406489+08:00",
-      "updated_at": "2026-08-20T16:11:02.406553+08:00"
+      "created_at": "2026-08-20T18:39:09.194318+08:00",
+      "updated_at": "2026-08-20T18:39:09.194327+08:00"
     },
     {
       "id": 6,
@@ -271,8 +271,8 @@ curl -X GET http://localhost:8000/api/units?status=available \
       "unit_number": "07-04",
       "monthly_rent": "2900.00",
       "status": "available",
-      "created_at": "2026-08-20T16:11:22.916016+08:00",
-      "updated_at": "2026-08-20T16:11:22.916097+08:00"
+      "created_at": "2026-08-20T18:39:23.032608+08:00",
+      "updated_at": "2026-08-20T18:39:23.032625+08:00"
     }
   ]
 }
@@ -297,8 +297,8 @@ curl -X POST http://localhost:8000/api/members \
   "full_name": "Priya Nair",
   "email": "priya.nair@example.com",
   "phone": "+65 8123 4567",
-  "created_at": "2026-08-20T16:11:22.997909+08:00",
-  "updated_at": "2026-08-20T16:11:22.997957+08:00"
+  "created_at": "2026-08-20T18:39:23.055484+08:00",
+  "updated_at": "2026-08-20T18:39:23.055498+08:00"
 }
 ```
 
@@ -324,32 +324,32 @@ curl -X GET http://localhost:8000/api/members \
       "full_name": "Aditi Rao",
       "email": "aditi.rao@example.com",
       "phone": "",
-      "created_at": "2026-08-20T16:11:02.409559+08:00",
-      "updated_at": "2026-08-20T16:11:02.409616+08:00"
+      "created_at": "2026-08-20T18:39:09.194809+08:00",
+      "updated_at": "2026-08-20T18:39:09.194818+08:00"
     },
     {
       "id": 3,
       "full_name": "Lena Fischer",
       "email": "lena.fischer@example.com",
       "phone": "",
-      "created_at": "2026-08-20T16:11:02.414071+08:00",
-      "updated_at": "2026-08-20T16:11:02.414089+08:00"
+      "created_at": "2026-08-20T18:39:09.195745+08:00",
+      "updated_at": "2026-08-20T18:39:09.195754+08:00"
     },
     {
       "id": 2,
       "full_name": "Marcus Tan",
       "email": "marcus.tan@example.com",
       "phone": "",
-      "created_at": "2026-08-20T16:11:02.412458+08:00",
-      "updated_at": "2026-08-20T16:11:02.412512+08:00"
+      "created_at": "2026-08-20T18:39:09.195292+08:00",
+      "updated_at": "2026-08-20T18:39:09.195305+08:00"
     },
     {
       "id": 4,
       "full_name": "Priya Nair",
       "email": "priya.nair@example.com",
       "phone": "+65 8123 4567",
-      "created_at": "2026-08-20T16:11:22.997909+08:00",
-      "updated_at": "2026-08-20T16:11:22.997957+08:00"
+      "created_at": "2026-08-20T18:39:23.055484+08:00",
+      "updated_at": "2026-08-20T18:39:23.055498+08:00"
     }
   ]
 }
@@ -390,8 +390,8 @@ curl -X POST http://localhost:8000/api/contracts \
   "monthly_rent": "2900.00",
   "total_value": "34800.00",
   "is_active": false,
-  "created_at": "2026-08-20T16:11:23.083765+08:00",
-  "updated_at": "2026-08-20T16:11:23.083811+08:00"
+  "created_at": "2026-08-20T18:39:23.080026+08:00",
+  "updated_at": "2026-08-20T18:39:23.080040+08:00"
 }
 ```
 
@@ -420,7 +420,7 @@ curl -X POST http://localhost:8000/api/contracts \
 
 ### Back-to-back booking is allowed
 
-Starting the day after the previous contract ends is fine. 1 Sep 2027 to 29 Feb 2028 is six whole calendar months, so the total is a clean 6 x 2900.
+Starting the day after the previous contract ends is fine. The total is 5 whole months plus 29 pro-rated days of February.
 
 ```bash
 curl -X POST http://localhost:8000/api/contracts \
@@ -451,8 +451,8 @@ curl -X POST http://localhost:8000/api/contracts \
   "monthly_rent": "2900.00",
   "total_value": "17400.00",
   "is_active": false,
-  "created_at": "2026-08-20T16:11:23.163499+08:00",
-  "updated_at": "2026-08-20T16:11:23.163572+08:00"
+  "created_at": "2026-08-20T18:39:23.100194+08:00",
+  "updated_at": "2026-08-20T18:39:23.100208+08:00"
 }
 ```
 
@@ -492,8 +492,8 @@ curl -X GET http://localhost:8000/api/contracts \
       "monthly_rent": "2900.00",
       "total_value": "17400.00",
       "is_active": false,
-      "created_at": "2026-08-20T16:11:23.163499+08:00",
-      "updated_at": "2026-08-20T16:11:23.163572+08:00"
+      "created_at": "2026-08-20T18:39:23.100194+08:00",
+      "updated_at": "2026-08-20T18:39:23.100208+08:00"
     },
     {
       "id": 3,
@@ -514,8 +514,8 @@ curl -X GET http://localhost:8000/api/contracts \
       "monthly_rent": "3600.00",
       "total_value": "43320.00",
       "is_active": false,
-      "created_at": "2026-08-20T16:11:02.483239+08:00",
-      "updated_at": "2026-08-20T16:11:02.483267+08:00"
+      "created_at": "2026-08-20T18:39:09.209989+08:00",
+      "updated_at": "2026-08-20T18:39:09.210000+08:00"
     },
     {
       "id": 4,
@@ -536,8 +536,8 @@ curl -X GET http://localhost:8000/api/contracts \
       "monthly_rent": "2900.00",
       "total_value": "34800.00",
       "is_active": false,
-      "created_at": "2026-08-20T16:11:23.083765+08:00",
-      "updated_at": "2026-08-20T16:11:23.083811+08:00"
+      "created_at": "2026-08-20T18:39:23.080026+08:00",
+      "updated_at": "2026-08-20T18:39:23.080040+08:00"
     },
     {
       "id": 1,
@@ -558,8 +558,8 @@ curl -X GET http://localhost:8000/api/contracts \
       "monthly_rent": "2500.00",
       "total_value": "30080.65",
       "is_active": true,
-      "created_at": "2026-08-20T16:11:02.423095+08:00",
-      "updated_at": "2026-08-20T16:11:02.423161+08:00"
+      "created_at": "2026-08-20T18:39:09.198071+08:00",
+      "updated_at": "2026-08-20T18:39:09.198083+08:00"
     },
     {
       "id": 2,
@@ -580,8 +580,8 @@ curl -X GET http://localhost:8000/api/contracts \
       "monthly_rent": "2100.00",
       "total_value": "12600.00",
       "is_active": false,
-      "created_at": "2026-08-20T16:11:02.464552+08:00",
-      "updated_at": "2026-08-20T16:11:02.464600+08:00"
+      "created_at": "2026-08-20T18:39:09.207685+08:00",
+      "updated_at": "2026-08-20T18:39:09.207699+08:00"
     }
   ]
 }
@@ -623,8 +623,8 @@ curl -X GET http://localhost:8000/api/contracts?active=true \
       "monthly_rent": "2500.00",
       "total_value": "30080.65",
       "is_active": true,
-      "created_at": "2026-08-20T16:11:02.423095+08:00",
-      "updated_at": "2026-08-20T16:11:02.423161+08:00"
+      "created_at": "2026-08-20T18:39:09.198071+08:00",
+      "updated_at": "2026-08-20T18:39:09.198083+08:00"
     }
   ]
 }

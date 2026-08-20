@@ -13,7 +13,7 @@ def api_client():
 @pytest.fixture
 def staff_user(db):
     return get_user_model().objects.create_user(
-        email="ops@hmlet.com", password="Sup3rSecret!", full_name="Ops Staff"
+        email="ops@example.com", password="Sup3rSecret!", full_name="Ops Staff"
     )
 
 

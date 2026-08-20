@@ -18,7 +18,7 @@ its contracts instead of being toggled by hand.
 ## Running it locally
 
 ```bash
-git clone <this-repo>
+git clone https://github.com/PavitraBhatt/hmlet-property-api.git
 cd hmlet-property-api
 
 python -m venv .venv
@@ -33,7 +33,7 @@ python manage.py runserver
 
 The API is then on `http://localhost:8000/api/`.
 
-`seed_demo_data` creates a staff login (`ops@hmlet.com` / `Sup3rSecret!`), two
+`seed_demo_data` creates a staff login (`ops@example.com` / `Sup3rSecret!`), two
 properties with five units between them, three members and a few contracts,
 including one that is running today and one that has already ended, so the
 `?active=true` filter shows something meaningful straight away.

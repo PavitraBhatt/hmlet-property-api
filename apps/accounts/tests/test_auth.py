@@ -7,13 +7,13 @@ pytestmark = pytest.mark.django_db
 def test_register_returns_tokens_and_creates_staff_user(api_client):
     response = api_client.post(
         reverse("register"),
-        {"email": "New.Staff@hmlet.com", "full_name": "New Staff", "password": "Sup3rSecret!"},
+        {"email": "New.Staff@example.com", "full_name": "New Staff", "password": "Sup3rSecret!"},
         format="json",
     )
 
     assert response.status_code == 201
     body = response.json()
-    assert body["user"]["email"] == "new.staff@hmlet.com"
+    assert body["user"]["email"] == "new.staff@example.com"
     assert body["user"]["is_staff"] is True
     assert body["tokens"]["access"]
 
@@ -31,7 +31,7 @@ def test_register_rejects_duplicate_email(api_client, staff_user):
 
 def test_register_rejects_weak_password(api_client):
     response = api_client.post(
-        reverse("register"), {"email": "weak@hmlet.com", "password": "1234"}, format="json"
+        reverse("register"), {"email": "weak@example.com", "password": "1234"}, format="json"
     )
 
     assert response.status_code == 400
